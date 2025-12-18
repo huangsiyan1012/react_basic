@@ -20,6 +20,20 @@ export default class App extends Component {
     const newTodos = [todoObj, ...todos];
     this.setState({ todos: newTodos });
   };
+
+  //用于更新todo
+  updateTodo = (id, done) => {
+    // 获取todos
+    const { todos } = this.state;
+    const newTodos = todos.map((todo) => {
+      // 如果是需要修改的todo - 这里用了对象的合并
+      if (todo.id === id) return { ...todo, done };
+      // 不是需要修改的todo
+      else return todo;
+    });
+    this.setState({ todos: newTodos });
+  };
+
   render() {
     const { todos } = this.state;
     return (
@@ -27,7 +41,7 @@ export default class App extends Component {
         <div className="todo-container">
           <div className="todo-wrap">
             <Header addTodo={this.addTodo}></Header>
-            <List todos={todos}></List>
+            <List todos={todos} updateTodo={this.updateTodo}></List>
             <Footer></Footer>
           </div>
         </div>
