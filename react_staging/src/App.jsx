@@ -14,7 +14,7 @@ export default class App extends Component {
     ],
   };
 
-  // 回调函数-给Header组件调用，用于header把数据传递给App组件
+  // 给Header组件调用，用于header把数据传递给App组件
   addTodo = (todoObj) => {
     const { todos } = this.state;
     const newTodos = [todoObj, ...todos];
@@ -34,6 +34,16 @@ export default class App extends Component {
     this.setState({ todos: newTodos });
   };
 
+  // 用于删除todo
+  deleteTodo = (id) => {
+    // 获取原来的todos
+    const { todos } = this.state;
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== id;
+    });
+    this.setState({ todos: newTodos });
+  };
+
   render() {
     const { todos } = this.state;
     return (
@@ -41,7 +51,11 @@ export default class App extends Component {
         <div className="todo-container">
           <div className="todo-wrap">
             <Header addTodo={this.addTodo}></Header>
-            <List todos={todos} updateTodo={this.updateTodo}></List>
+            <List
+              todos={todos}
+              updateTodo={this.updateTodo}
+              deleteTodo={this.deleteTodo}
+            ></List>
             <Footer></Footer>
           </div>
         </div>

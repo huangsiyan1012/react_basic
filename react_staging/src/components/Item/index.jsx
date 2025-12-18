@@ -6,6 +6,7 @@ export default class Item extends Component {
   // 对接收的props进行类型和必要性的限制
   static propTypes = {
     updateTodo: PropTypes.func.isRequired,
+    deleteTodo: PropTypes.func.isRequired,
   };
   state = { mouse: false };
   // 鼠标移入移出的回调
@@ -19,6 +20,11 @@ export default class Item extends Component {
     return (e) => {
       this.props.updateTodo(id, e.target.checked);
     };
+  };
+
+  // 删除的回调
+  handleDelete = (id) => {
+    this.props.deleteTodo(id);
   };
   render() {
     const { name, done, id } = this.props;
@@ -42,6 +48,9 @@ export default class Item extends Component {
             <span>{name}</span>
           </label>
           <button
+            onClick={() => {
+              this.handleDelete(id);
+            }}
             className="btn btn-danger"
             style={{ display: this.state.mouse ? "block" : "none" }}
           >
