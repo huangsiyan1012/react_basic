@@ -1,4 +1,3 @@
-// 入口文件
 // 引入React
 import React from "react";
 // 引入ReactDOM
