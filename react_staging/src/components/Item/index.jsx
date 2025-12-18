@@ -24,7 +24,9 @@ export default class Item extends Component {
 
   // 删除的回调
   handleDelete = (id) => {
-    this.props.deleteTodo(id);
+    if (window.confirm("确定删除吗？")) {
+      this.props.deleteTodo(id);
+    }
   };
   render() {
     const { name, done, id } = this.props;
@@ -42,7 +44,7 @@ export default class Item extends Component {
           <label>
             <input
               type="checkbox"
-              defaultChecked={done}
+              checked={done}
               onChange={this.handleCheck(id)}
             />
             <span>{name}</span>
