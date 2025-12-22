@@ -1,8 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import { Link, Route } from "react-router-dom";
-import About from "./components/About";
-import Home from "./components/Home";
+import Header from "./components/Header";
+import About from "./pages/About";
+import Home from "./pages/Home";
 
 export default class App extends Component {
   render() {
@@ -10,11 +11,7 @@ export default class App extends Component {
       <div id="root">
         <div>
           <div className="row">
-            <div className="col-xs-offset-2 col-xs-8">
-              <div className="page-header">
-                <h2>React Router Demo</h2>
-              </div>
-            </div>
+            <Header></Header>
           </div>
           <div className="row">
             <div className="col-xs-2 col-xs-offset-2">
