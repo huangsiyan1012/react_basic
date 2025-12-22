@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import About from "./components/About";
@@ -9,7 +10,7 @@ export default class App extends Component {
       <div id="root">
         <div>
           <div className="row">
-            <div classNameName="col-xs-offset-2 col-xs-8">
+            <div className="col-xs-offset-2 col-xs-8">
               <div className="page-header">
                 <h2>React Router Demo</h2>
               </div>
@@ -27,8 +28,12 @@ export default class App extends Component {
                 </a> */}
 
                 {/* 在React中靠路由链接实现切换组件 - 编写路由链接 */}
-                <Link className="list-group-item" to="/about"></Link>
-                <Link className="list-group-item" to="/home"></Link>
+                <Link className="list-group-item" to="/about">
+                  About
+                </Link>
+                <Link className="list-group-item" to="/home">
+                  Home
+                </Link>
               </div>
             </div>
             <div className="col-xs-6">
