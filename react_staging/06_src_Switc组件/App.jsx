@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import MyNavLink from "./components/MyNavLink";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import Test from "./pages/Test";
 
 export default class App extends Component {
   render() {
@@ -26,19 +27,19 @@ export default class App extends Component {
                 </a> */}
 
                 {/* 在React中靠路由链接实现切换组件 - 编写路由链接 */}
-                <MyNavLink to="/home/a">Home</MyNavLink>
-                <MyNavLink to="/about/a/b">About</MyNavLink>
+                <MyNavLink to="/home">Home</MyNavLink>
+                <MyNavLink to="/about">About</MyNavLink>
               </div>
             </div>
             <div className="col-xs-6">
               <div className="panel">
                 <div className="panel-body">
                   {/* 注册路由 */}
+                  {/* Switch组件保证一个路由途径对应一个组件 */}
                   <Switch>
-                    {/* 模糊匹配(默认) */}
                     <Route path="/about" component={About}></Route>
-                    {/*开启精准匹配 */}
-                    <Route exact path="/home" component={Home}></Route>
+                    <Route path="/home" component={Home}></Route>
+                    <Route path="/home" component={Test}></Route>
                   </Switch>
                 </div>
               </div>
