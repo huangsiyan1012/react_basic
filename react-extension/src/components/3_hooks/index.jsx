@@ -19,6 +19,12 @@ import ReactDOM from "react-dom";
 function Demo() {
   const [count, setCount] = React.useState(0);
 
+  const myRef = React.useRef();
+
+  function show() {
+    alert(myRef.current.value);
+  }
+
   function add() {
     // setCount(count + 1);// 第一种
     setCount((count) => count + 1); // 给原来的值，返回的是新的值
@@ -40,9 +46,11 @@ function Demo() {
 
   return (
     <div>
+      <input type="text" ref={myRef}></input>
       <h2>当前求和为{count}</h2>
       <button onClick={add}>点我+1</button>
       <button onClick={unmount}>卸载组件</button>
+      <button onClick={show}>提示输入的内容</button>
     </div>
   );
 }
